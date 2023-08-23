@@ -7,7 +7,8 @@
 using namespace std;
 
 struct Organizacao {
-	float cpiU, cpiJ, cpiB, cpiIL, cpiIAE, cpiR, cpiS, totalCiclos, contadorInstrucao, mediaCPI, tempoClock, freq, tempoExecucaoCPU;
+	int cpiU, cpiJ, cpiB, cpiIL, cpiIAE, cpiR, cpiS;
+	float totalCiclos, contadorInstrucao, mediaCPI, tempoClock, freq, tempoExecucaoCPU;
 };
 
 struct Instrucao {
@@ -30,21 +31,44 @@ void calcularImprimirDesempenho(Organizacao& orgA, Organizacao& orgB) {
 
 	system("cls");
 
+	cout << "Total de instrucoes Organizacao A:" << endl;
+	cout << orgA.contadorInstrucao << endl;
+
 	cout << "Total de ciclos Organizacao A:" << endl;
 	cout << orgA.totalCiclos << endl;
+
 	cout << "Media de CPI Organizacao A:" << endl;
 	cout << orgA.mediaCPI << endl;
+	
+	cout << "Tempo de execucao da Organizacao A:" << endl;
+	cout << orgA.tempoExecucaoCPU << endl;
+
+
+	cout << "Total de instrucoes Organizacao B:" << endl;
+	cout << orgB.contadorInstrucao << endl;
 
 	cout << "Total de ciclos Organizacao B:" << endl;
 	cout << orgB.totalCiclos << endl;
+
 	cout << "Media de CPI Organizacao B:" << endl;
 	cout << orgB.mediaCPI << endl;
 
+	cout << "Tempo de execucao da Organizacao B:" << endl;
+	cout << orgB.tempoExecucaoCPU << endl;
+
 	if (orgA.tempoExecucaoCPU > orgB.tempoExecucaoCPU) {
-		cout << "A organizacao B e " << orgA.tempoExecucaoCPU / orgB.tempoExecucaoCPU << " vezes mais rapido que a organizacao A" << endl;
+		cout << "Desempenho(mais lento / mais rapido) = " << orgA.tempoExecucaoCPU << " / " << orgB.tempoExecucaoCPU << " = " << orgA.tempoExecucaoCPU / orgB.tempoExecucaoCPU << " x mais rapido" << endl;
 	}
 	else if (orgB.tempoExecucaoCPU > orgA.tempoExecucaoCPU) {
-		cout << "A organizacao A e " << orgB.tempoExecucaoCPU / orgA.tempoExecucaoCPU << " vezes mais rapido que a organizacao B" << endl;
+		cout << "Desempenho(mais lento / mais rapido) = " << orgA.tempoExecucaoCPU << " / " << orgB.tempoExecucaoCPU << " = " << orgB.tempoExecucaoCPU / orgA.tempoExecucaoCPU << " x mais rapido" << endl;
+	}
+	cout << endl;
+
+	if (orgA.tempoExecucaoCPU > orgB.tempoExecucaoCPU) {
+		cout << "Logo, a organizacao B e " << orgA.tempoExecucaoCPU / orgB.tempoExecucaoCPU << " vezes mais rapido que a organizacao A" << endl;
+	}
+	else if (orgB.tempoExecucaoCPU > orgA.tempoExecucaoCPU) {
+		cout << "Logo, a organizacao A e " << orgB.tempoExecucaoCPU / orgA.tempoExecucaoCPU << " vezes mais rapido que a organizacao B" << endl;
 	}
 	else {
 		cout << "As duas organizacoes tem o mesmo desempenho" << endl;
